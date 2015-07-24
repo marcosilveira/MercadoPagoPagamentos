@@ -8,5 +8,5 @@ Ferramenta para visualisar no Mercado Livre os pagamentos pendentes feito por bo
 Esta ferramenta é em formato de UserScript, para usar instale o complemento Tampermonkey no Google Chorme ou Greasemonkey no Firefox (Não testado no FF).
 
 
-![](http://s30.postimg.org/a5jhw36bx/mercado_Pago_Pagamentos.png)
+![](http://s30.postimg.org/4hd7571zl/mercado_Pago_Pagamentos.png)
 
