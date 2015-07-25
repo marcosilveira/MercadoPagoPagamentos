@@ -47,7 +47,7 @@ $(document).ready(function(){
     if ( location.href == 'https://myaccount.mercadolivre.com.br/summary' || location.href == 'https://myaccount.mercadolivre.com.br/summary/'  ) {
         insertBotaoMercadoPago();
     }
-    //  PAGINA DE REUSMO //
+    //  PAGINA DE RESUMO //
 
     function insertBotaoMercadoPago(){
         mp_button = '<li id="MOVIMENTOMP" role="presentation" class="ch-bellows"><a href="https://www.mercadopago.com/mlb/ferramentas/aplicacoes" class="ch-bellows-trigger" target="_blank">Movimento MP</a></li>';
@@ -97,8 +97,6 @@ $(document).ready(function(){
                 contentType: 'application/json',
             })
             .success(function (ret) {
-//                console.log(token);
-                // recebe os pagamentos
                 var response = ret;
                 var nPag = response.paging.total;
                 var nLimite = response.paging.limit;
@@ -119,10 +117,7 @@ $(document).ready(function(){
                             contentType: 'application/json; charset=utf-8',
                         })
                         .success(function (ret) {
-//                            console.log(ret);
                             for (i = 0; i < ret.results.length; i++) {
-                                //if (ret.results[i].payment_method_id=="bolbradesco" && ret.results[i].status=="pending")
-                                //if (ret.results[i].payment_method_id=="bolbradesco")
                                 {
                                     pagamentos.push(ret.results[i]);
                                 }
@@ -132,12 +127,9 @@ $(document).ready(function(){
                         .complete(function () {
                             if (callQtd==0)
                             {
-//                                console.log("acabei");
                                 if (pagamentos.length>0)
                                 {
-                                    // Sort by price high to low
                                     pagamentos.sort(sort_by('id', true, parseInt));
-                                    //                                console.log(pagamentos);
                                     for (i = 0; i < pagamentos.length; i++) {
                                         var pgId = pagamentos[i].id;
                                         var pgDesc = unescape(JSON.parse('"' + pagamentos[i].description.replace('"', '\\"') + '"'));
@@ -163,8 +155,6 @@ $(document).ready(function(){
                                         if (pgValFracS.length==1)
                                             pgValFracS = "0" + pgValFracS;
                                         pgValFrac = pgValFracS;
-                                        //if (pgStatus == "cancelled")
-                                        //    continue;
                                         var divItem = "";
                                         if (dataAnt!=pgCreated)
                                         {
@@ -214,7 +204,6 @@ $(document).ready(function(){
                                 }
                                 else
                                 {
-//                                    console.log("sem pagamentos");
                                     var divItem = "";
                                     divItem += '<div class="ch-box-help result filters-zrp">';
                                     divItem += '   <h2>Ops, não encontramos nada</h2>';
@@ -237,7 +226,6 @@ $(document).ready(function(){
             
         })
         .error(function (xhr, ajaxOptions, thrownError) {
-            //                console.log("erro..");
             console.log(xhr.status);
             console.log(thrownError);
             console.log(xhr.responseText);
