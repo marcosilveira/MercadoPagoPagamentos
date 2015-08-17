@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MercadoPagoPagamentos
 // @namespace    http://your.homepage/
-// @version      0.2
+// @version      0.3
 // @description  Modificações na página do ML para exibir pagamentos de boletos pendentes
 // @author       Marco Silveira
 // @website https://github.com/marcosilveira/MercadoPagoPagamentos
@@ -68,8 +68,9 @@ $(document).ready(function(){
         var style = '<div id="loading-image" class="loading-gif"></div>';
         style += '<link rel="stylesheet" href="https://static.mlstatic.com/org-img/ch/ui/1.1.1/themes/mp/chico.min-0.0.2.css" />';
         style += '<link rel="stylesheet" href="https://static.mlstatic.com/org-img/ch/mesh/2.2/mesh.min.css">';
-        style += '<link href="https://mercadopago.mlstatic.com/static/DgHUuC1yjpeW0chlrzqUfvzzCkJ3kUPSDEeQ7peTkGF.css" type="text/css" rel="stylesheet" media="screen, projection" />';
-        style += '<link href="https://mercadopago.mlstatic.com/static/MDoveoU8qmevEAJZMtHG9rW6y09F7qVpA1eY2mNasat.css" type="text/css" rel="stylesheet" media="screen, projection" />';
+        style += '<link href="https://mercadopago.mlstatic.com/static/OvDN8wBCijR4jZa7waEX3xQIn3xOSsXVXn1waETLX8i.css" type="text/css" rel="stylesheet" media="screen, projection" />';
+        style += '<link href="https://mercadopago.mlstatic.com/static/vlyjy7jD3WgJNH9jphHiF3Ef2fACzBcVLNNXrbrqxWM.css" type="text/css" rel="stylesheet" media="screen, projection" />';
+        style += '<link href="https://mercadopago.mlstatic.com/static/j3b91GWY5sHgAJryzcr947ByRKXh5UEUYiSO5iCzn4S.css" type="text/css" rel="stylesheet" media="screen, projection" />';
         $('#wrap').append(style);
         var itens  = document.getElementById("credentials").getElementsByTagName("td");
         var item_id = itens[1].innerText;
