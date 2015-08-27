@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MercadoPagoPagamentos
 // @namespace    http://your.homepage/
-// @version      0.4
+// @version      0.5
 // @description  Modificações na página do ML para exibir pagamentos de boletos pendentes
 // @author       Marco Silveira
 // @website https://github.com/marcosilveira/MercadoPagoPagamentos
