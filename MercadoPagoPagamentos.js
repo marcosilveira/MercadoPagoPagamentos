@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MercadoPagoPagamentos
 // @namespace    http://your.homepage/
-// @version      0.5
+// @version      0.6
 // @description  Modificações na página do ML para exibir pagamentos de boletos pendentes
 // @author       Marco Silveira
 // @website https://github.com/marcosilveira/MercadoPagoPagamentos
@@ -145,12 +145,14 @@ $(document).ready(function(){
             userId = data.user_id;
             refreshToken = data.refresh_token;
             var urlsearch = "https://api.mercadopago.com/v1/payments/search?access_token="+token+"&status=pending&payment_method_id=bolbradesco";
+            //var urlsearch = "https://api.mercadopago.com/v1/payments/search?access_token="+token+"&status=cancelled";
             $.ajax({
                 type: "GET",
                 url: urlsearch,
                 contentType: 'application/json',
             })
             .success(function (ret) {
+                console.log(ret);
                 var response = ret;
                 var nPag = response.paging.total;
                 var nLimite = response.paging.limit;
@@ -179,7 +181,7 @@ $(document).ready(function(){
                             callQtd--;
                         })
                         .complete(function () {
-                            if (callQtd==0)
+                            if (callQtd===0)
                             {
                                 if (pagamentos.length>0)
                                 {
@@ -191,16 +193,15 @@ $(document).ready(function(){
                                         var pgCreated = dateFromUTCString(pagamentos[i].date_created);
                                         pgCreated = pgCreated.getDate() + ' de ' + _texts.monthsNames[(pgCreated.getMonth()+1)-1] + ' de ' +  pgCreated.getFullYear();
                                         var pgCredited = pagamentos[i].money_release_date;
-                                        if (pgCredited!=null)
+                                        if (pgCredited!==null)
                                         {
                                             pgCredited = dateFromUTCString(pgCredited);
                                             pgCredited = pgCredited.getDate() + ' de ' + (pgCredited.getMonth()+1) + ' de ' +  pgCredited.getFullYear();
                                         }
                                         var pgTipo = pagamentos[i].payment_type_id;
                                         var pgMetodo = pagamentos[i].payment_method_id;
-                                        var pgStatus = pagamentos[i].status;
                                         var pgValor = pagamentos[i].transaction_amount+pagamentos[i].shipping_cost;
-                                        var pgNickname = unescape(JSON.parse('"' + pagamentos[i].payer.nickname.replace('"', '\\"') + '"'));
+                                        var pgNickname = "";//unescape(JSON.parse('"' + pagamentos[i].payer.nickname.replace('"', '\\"') + '"'));
                                         var pgPayerId = pagamentos[i].payer.id;
                                         var pgEmail = pagamentos[i].payer.email;
                                         var pgValInt = parseInt(pgValor);
@@ -212,7 +213,7 @@ $(document).ready(function(){
                                         var divItem = "";
                                         if (dataAnt!=pgCreated)
                                         {
-                                            if (fechaDiv==true)
+                                            if (fechaDiv===true)
                                             {
                                                 divItem += '</div>';
                                             }
