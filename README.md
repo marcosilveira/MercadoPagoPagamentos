@@ -1,6 +1,6 @@
 # MercadoPagoPagamentos
 
-Desenvolvido por: Marco Silveira (vastar@globo.com)
+Desenvolvido por: Marco Silveira (marcosilveira39@gmail.com)
 
 
 # Ferramenta para visualizar no Mercado Livre os pagamentos pendentes feito por boleto.
